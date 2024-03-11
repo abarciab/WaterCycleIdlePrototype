@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager i;
     [SerializeField] private MouseGraphicsController _mouseGraphics;
     [SerializeField] private TextMeshProUGUI _energyText;
+    [SerializeField] private Slider _milestoneSlider;
 
     private void Awake() => i = this;
 
@@ -32,5 +34,9 @@ public class UIManager : MonoBehaviour
     public void DisplayEnergy(int energyAmount)
     {
         _energyText.text = "Energy left: " + energyAmount;
+    }
+
+    public void SetMilestoneBar(float value) {
+        _milestoneSlider.value = value;
     }
 }

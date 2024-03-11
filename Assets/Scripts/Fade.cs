@@ -25,7 +25,7 @@ public class Fade : MonoBehaviour
         StartCoroutine(AnimateFade(true));
     }
 
-    IEnumerator AnimateFade(bool reverse)
+    private IEnumerator AnimateFade(bool reverse)
     {
         float timePassed = 0;
         while (timePassed < fadeTime) {
