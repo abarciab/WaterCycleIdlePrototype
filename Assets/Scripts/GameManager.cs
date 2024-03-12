@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public enum PlayerAbility { None, Sunlight, Pressure, Gravity, Frost}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager i;
@@ -16,21 +17,30 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerAbility _currentAbility;
     [SerializeField] private int _dailyEnergy;
     [SerializeField, ReadOnly] private int _energy;
+    [SerializeField] private float _nightTime;
+    [SerializeField] private const int _numMilestone = 3;
+    [SerializeField] private int _milestonesCompleted;
+
 
     [HideInInspector] public UnityEvent OnAbilityChange;
+    [HideInInspector] public UnityEvent OnDayEnd;
+    [HideInInspector] public UnityEvent OnResourceValueChange;
     [HideInInspector] public PlayerAbility CurrentAbility => _currentAbility;
     [HideInInspector] public int CurrentEnergy => _energy;
-    [HideInInspector] public List<ResourceController> Resources = new();
-
+    [HideInInspector] public List<ResourceController> Resources = new List<ResourceController>();
     private void Start()
     {
         fade.Hide();
-        StartNewDay();
+        DisplayObjective();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) TogglePause();
+    }
+
+    private void DisplayObjective() {
+        UIManager.DisplayObjective(GetComponent<DataManager>().GetNextObjective());
     }
 
     public void DecrementEnergy()
@@ -42,6 +52,24 @@ public class GameManager : MonoBehaviour
     public ResourceController GetResourceController(Resource type)
     {
         return Resources.Where(x => x.Type == type).First();
+    }
+
+    public void EndDay() {
+        if (_milestonesCompleted == _numMilestone) EndGame();
+        else StartCoroutine(AnimateNight());
+    }
+
+    private IEnumerator AnimateNight() {
+        UIManager.i.gameObject.SetActive(false);
+        Cursor.visible = false;
+
+        yield return new WaitForSeconds(_nightTime/2);
+        OnDayEnd.Invoke();
+        yield return new WaitForSeconds(_nightTime/2);
+
+        UIManager.i.gameObject.SetActive(true);
+        Cursor.visible = true;
+        StartNewDay();
     }
 
     public void StartNewDay()
@@ -105,6 +133,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(fade.fadeTime + 0.5f);
         Destroy(AudioManager.i.gameObject);
         SceneManager.LoadScene(num);
+    }
+
+    public void CompleteMilestone() {
+        _milestonesCompleted += 1;
+        UIManager.i.SetMilestoneBar(_milestonesCompleted / (float)_numMilestone);
     }
 
 }

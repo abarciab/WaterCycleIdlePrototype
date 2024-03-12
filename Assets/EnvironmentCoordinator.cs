@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class EnvironmentCoordinator : MonoBehaviour
 {
+    [SerializeField] private List<EnvironmentTriggerData> _conditions;
 
+    private void Start() {
+        GameManager.i.OnDayEnd.AddListener(CheckConditions);
+    }
 
-
-    [SerializeField] private GameObject _riverBase;
+    private void CheckConditions() {
+        foreach (var c in _conditions) c.Check();
+    }
 }

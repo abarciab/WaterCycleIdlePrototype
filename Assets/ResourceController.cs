@@ -68,14 +68,23 @@ public class ResourceController : MonoBehaviour
 
         var dest = GameManager.i.GetResourceController(transition.FinalResource);
         dest.AddResource(transition.FinalState, amount);
+
+        if (Random.Range(0, 1f) < transition.SecondaryChance) {
+            dest = GameManager.i.GetResourceController(transition.SecondayResource);
+            dest.AddResource(transition.SecondaryState, amount);
+        }
+
         GameManager.i.DecrementEnergy();
         RefreshVisuals();
     }
+
+    public float GetStateTotal(WaterState state) => _stateTotals[state];
 
     public void AddResource(WaterState type, float amount)
     {
         _stateTotals[type] = Mathf.Min(1, _stateTotals[type] + amount);
         RefreshVisuals();
+        GameManager.i.OnResourceValueChange.Invoke();
     }
 
     private void RefreshVisuals()
