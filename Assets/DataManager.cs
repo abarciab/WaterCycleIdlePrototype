@@ -5,7 +5,7 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
     [SerializeField] private TextAsset _objectivesTextFile;
-    private List<List<string>> _objectives;
+    private List<List<string>> _objectives = new List<List<string>>();
 
     private void Awake() {
         ParseFile();

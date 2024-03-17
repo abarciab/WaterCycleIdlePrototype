@@ -4232,7 +4232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &729826728
 Transform:
   m_ObjectHideFlags: 0
@@ -6272,7 +6272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1058335900
 Transform:
   m_ObjectHideFlags: 0
@@ -7420,51 +7420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a84f9b7fd688948bc8119e7f686c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _conditions:
-  - _triggers:
-    - _location: 3
-      _state: 0
-      _opperator: 0
-      _amount: 0
-    _object: {fileID: 2001988275}
-    permenant: 0
-    _type: 0
-    _targetState: 1
-    _activeMaterial: {fileID: 0}
-    _inactiveMaterial: {fileID: 0}
-  - _triggers:
-    - _location: 0
-      _state: 1
-      _opperator: 0
-      _amount: 0.1
-    _object: {fileID: 729826727}
-    permenant: 0
-    _type: 0
-    _targetState: 1
-    _activeMaterial: {fileID: 0}
-    _inactiveMaterial: {fileID: 0}
-  - _triggers:
-    - _location: 1
-      _state: 2
-      _opperator: 0
-      _amount: 0.1
-    _object: {fileID: 1058335899}
-    permenant: 0
-    _type: 0
-    _targetState: 1
-    _activeMaterial: {fileID: 0}
-    _inactiveMaterial: {fileID: 0}
-  - _triggers:
-    - _location: 1
-      _state: 2
-      _opperator: 0
-      _amount: 0.1
-    _object: {fileID: 1711907639}
-    permenant: 1
-    _type: 1
-    _targetState: 1
-    _activeMaterial: {fileID: 2100000, guid: 8e899a0a9fda91044b9dbd3ef39166b8, type: 2}
-    _inactiveMaterial: {fileID: 2100000, guid: 16ade09edc011474d8c6601cbfee2845, type: 2}
+  _conditions: []
 --- !u!1 &1206051365
 GameObject:
   m_ObjectHideFlags: 0
@@ -10742,7 +10698,7 @@ MonoBehaviour:
   _currentAbility: 0
   _dailyEnergy: 10
   _energy: 0
-  _nightTime: 1.5
+  _nightTime: 0
   _milestonesCompleted: 0
   OnAbilityChange:
     m_PersistentCalls:
@@ -10783,7 +10739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446850f0cd139e84aa97f857b89962f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _objectivesTextFile: {fileID: 0}
+  _objectivesTextFile: {fileID: 4900000, guid: e100cb7dac34dc64a96815158a079080, type: 3}
 --- !u!1 &1996576937
 GameObject:
   m_ObjectHideFlags: 0
@@ -10835,7 +10791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2001988276
 Transform:
   m_ObjectHideFlags: 0
@@ -11090,7 +11046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mouseGraphics: {fileID: 34843347}
   _energyText: {fileID: 1804416222}
-  _milestoneSlider: {fileID: 1595081526}
+  _milestoneSlider: {fileID: 0}
 --- !u!1 &2058331747
 GameObject:
   m_ObjectHideFlags: 0
@@ -11540,7 +11496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2110061707
 RectTransform:
   m_ObjectHideFlags: 0

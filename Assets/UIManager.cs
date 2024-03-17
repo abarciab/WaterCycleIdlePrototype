@@ -39,4 +39,9 @@ public class UIManager : MonoBehaviour
     public void SetMilestoneBar(float value) {
         _milestoneSlider.value = value;
     }
+
+    public void DisplayObjective(List<string> objectiveData )
+    {
+
+    }
 }

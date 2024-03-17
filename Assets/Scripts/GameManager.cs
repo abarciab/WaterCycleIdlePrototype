@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void DisplayObjective() {
-        UIManager.DisplayObjective(GetComponent<DataManager>().GetNextObjective());
+        UIManager.i.DisplayObjective(GetComponent<DataManager>().GetNextObjective());
     }
 
     public void DecrementEnergy()
